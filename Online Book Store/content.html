@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Bookstore</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        /* Add some basic styling for the cart container */
+        .cart-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-height: 80vh;
+            overflow-y: auto;
+            width: 300px;
+        }
+        .cart-header {
+            font-weight: bold;
+        }
+        .cart-item {
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container text-center">
+    <div id="bookstore-content"></div>
+</div>
+
+<!-- Cart Section -->
+<div class="cart-container">
+    <div class="cart-header">
+        <h5>Shopping Cart</h5>
+        <p id="cart-total-items">Total Items: 0</p>
+        <p id="cart-total-price">Total Price: $0.00</p>
+    </div>
+    <div id="cart-items"></div>
+    <button class="btn btn-danger" onclick="clearCart()">Clear Cart</button>
+</div>
+
+<script>
+    // Fetch data from books.json
+    fetch('books.xml')
+        .then(response => response.text())
+        .then(data => {
+            let parser = new DOMParser();
+            let xmlDoc = parser.parseFromString(data, "text/xml");
+            let bookstoreContent = '';
+            let genres = xmlDoc.getElementsByTagName('genre');
+            for (let i = 0; i < genres.length; i++) {
+                bookstoreContent += `<div class="row mt-4" id="${genres[i].getAttribute("category")}">
+                                        <h1 class="text-start display-6">${genres[i].getAttribute("category").charAt(0).toUpperCase() + genres[i].getAttribute("category").slice(1)}</h1>
+                                        <hr>`;
+                    books=genres[i].getElementsByTagName('book');
+                    for (let j = 0; j < books.length; j++) {
+                    bookstoreContent += `
+                    <div class="col p-2">
+                        <div class="card" style="width: 18rem; min-height: 465px;">
+                            <img src="${books[j].getElementsByTagName('image')[0].textContent}" class="card-img-top w-100 book-image" alt="${books[j].getElementsByTagName('title')[0].textContent}" height="300px">
+                            <div class="card-body">
+                                <h5 class="card-title">${books[j].getElementsByTagName('title')[0].textContent}</h5>
+                                <p class="card-text">${books[j].getElementsByTagName('description')[0].textContent}</p>
+                                <p class="card-text"><small class="text-body-secondary">-${books[j].getElementsByTagName('author')[0].textContent}</small></p>
+                            </div>
+                            <div class="card-footer d-flex justify-content-between align-items-center">
+                                <p class="font-size-4 fw-semibold my-auto">$${books[j].getElementsByTagName('price')[0].textContent}</p>
+                                <button class="btn btn-primary p-n5 m-n5 add-to-cart-btn" onclick="addToCart(1, '${books[j].getElementsByTagName('title')[0].textContent}', '${books[j].getElementsByTagName('author')[0].textContent}', '${books[j].getElementsByTagName('description')[0].textContent}', ${books[j].getElementsByTagName('price')[0].textContent}, '${books[j].getElementsByTagName('image')[0].textContent}')">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>`;
+                };
+                bookstoreContent += `</div>`;
+            };
+
+            document.getElementById('bookstore-content').innerHTML = bookstoreContent;
+        });
+
+    // Helper function to get cookies
+    function getCookie(name) {
+        let cookieArr = document.cookie.split(";");
+        for (let i = 0; i < cookieArr.length; i++) {
+            let cookie = cookieArr[i].trim();
+            if (cookie.indexOf(name + "=") === 0) {
+                return cookie.substring(name.length + 1, cookie.length);
+            }
+        }
+        return null;
+    }
+
+    // Helper function to set cookies
+    function setCookie(name, value, days) {
+        const d = new Date();
+        d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000)); // Set expiration in days
+        const expires = "expires=" + d.toUTCString();
+        document.cookie = name + "=" + value + ";" + expires + ";path=/";
+    }
+
+    // Initialize cart from cookies
+    let cart = JSON.parse(getCookie('cart')) || [];
+
+    // Update cart display
+    function updateCart() {
+        const cartItemsContainer = document.getElementById('cart-items');
+        const cartTotalItems = document.getElementById('cart-total-items');
+        const cartTotalPrice = document.getElementById('cart-total-price');
+        
+        // Clear the current cart display
+        cartItemsContainer.innerHTML = '';
+
+        // Display cart items
+        cart.forEach(item => {
+            const cartItemDiv = document.createElement('div');
+            cartItemDiv.classList.add('cart-item');
+            cartItemDiv.innerHTML = `
+                <span>${item.title} - $${item.price*Number(item.qty)}</span>
+                <div class="h-50">
+                <button onclick="removeFromCart('${item.title}')" class="btn btn-dark px-2 py-0">-</button>
+                <span>${item.qty}</span>
+                <button onclick="addToCart(1, '${item.title}', '${item.author}', '${item.description}', ${item.price}, '${item.image}')" class="btn btn-light px-2 py-0">+</button>
+                </div>
+                `;
+            cartItemsContainer.appendChild(cartItemDiv);
+        });
+
+        // Update total items and price
+        cartTotalItems.textContent = `Total Items: ${cart.reduce((sum, item) => sum + Number(item.qty), 0)}`;
+        cartTotalPrice.textContent = `Total Price: $${cart.reduce((sum, item) => sum + Number(item.price)*Number(item.qty), 0).toFixed(2)}`;
+    }
+
+    // Add to cart
+    function addToCart(qty, title, author, description, price, image) {
+        const book = { qty, title, author, description, price, image };
+        if(cart.findIndex(item=>item.title==title)!=-1){
+            cart[cart.findIndex(item=>item.title==title)].qty+=1;
+        }else{
+        cart.push(book);
+        }
+        setCookie('cart', JSON.stringify(cart), 7); // Store the cart in a cookie that expires in 7 days
+        updateCart();
+    }
+
+    // Remove from cart
+    function removeFromCart(title) {
+        if(cart[cart.findIndex(item=>item.title==title)].qty>=2){
+            cart[cart.findIndex(item=>item.title==title)].qty-=1
+        }else{
+        cart = cart.filter(item => item.title !== title);
+        }
+        setCookie('cart', JSON.stringify(cart), 7); // Update the cart cookie
+        updateCart();
+    }
+
+    // Clear cart
+    function clearCart() {
+        cart = [];
+        setCookie('cart', JSON.stringify(cart), 7); // Clear the cart cookie
+        updateCart();
+    }
+
+    // Initialize cart on page load
+    window.onload = updateCart;
+
+</script>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gybGzNuE0qA7Q5o+1a3fqlUwYTKj1eVOzMBrVj4gVW1TmcLkW/" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-pzjw8f+ua7Kw1TIq0+jGz7pH9tK7k3WzGGjqVV0Rmsw+5gd4J0I/j5hXrbBNS5+j" crossorigin="anonymous"></script>
+</body>
+</html>

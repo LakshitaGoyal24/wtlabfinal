@@ -1,0 +1,80 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.registration-container {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+label {
+    font-size: 14px;
+    color: #333;
+}
+
+input[type="text"], input[type="password"], input[type="email"] {
+    width: 92%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.register-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #1786c7;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.error-message {
+    color: red;
+    font-size: 12px;
+    display: none;
+}
+
+.success-message {
+    color: rgb(47, 137, 165);
+    font-size: 14px;
+    display: none;
+    text-align: center;
+}
+
+.register-btn:hover {
+    background-color: #4476b1;
+}
+
+.form-footer {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.form-footer a {
+color: #4c7aaf;
+font-weight: bold;
+text-decoration: none;
+}
+
+.form-footer a:hover {
+color: #4586a0;
+text-decoration: underline;
+}

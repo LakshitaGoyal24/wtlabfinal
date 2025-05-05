@@ -1,0 +1,117 @@
+{
+  "fiction": [
+    {
+      "title": "The Great Gatsby",
+      "author": "F. Scott Fitzgerald",
+      "description": "A tale of the American Dream in the roaring 1920s.",
+      "price": 10.99,
+      "image": "https://cdn.kobo.com/book-images/f37f5bc2-8171-475a-99fb-2f807813e085/1200/1200/False/the-great-gatsby-deluxe-hardbound-edition.jpg"
+    },
+    {
+      "title": "1984",
+      "author": "George Orwell",
+      "description": "A dystopian society ruled by Big Brother, where truth is manipulated.",
+      "price": 8.99,
+      "image": "https://m.media-amazon.com/images/I/715WdnBHqYL._UF1000,1000_QL80_.jpg"
+    },
+    {
+      "title": "Pride and Prejudice",
+      "author": "Jane Austen",
+      "description": "Elizabeth Bennet navigates love and societal expectations in Regency-era England.",
+      "price": 6.99,
+      "image": "https://rukminim2.flixcart.com/image/850/1000/kkec4280/book/d/h/d/pride-prejudice-original-imafzra6pfewjjwb.jpeg?q=20&crop=false"
+    }
+  ],
+  "fantasy": [
+    {
+      "title": "The Hobbit",
+      "author": "J.R.R. Tolkien",
+      "description": "Bilbo Baggins embarks on an adventure to reclaim treasure guarded by a dragon.",
+      "price": 13.49,
+      "image": "https://m.media-amazon.com/images/I/71V2v2GtAtL._AC_UF1000,1000_QL80_.jpg"
+    },
+    {
+      "title": "Harry Potter and the Sorcerer Stone",
+      "author": "J.K. Rowling",
+      "description": "Harry Potter discovers he is a wizard and begins his adventure at Hogwarts.",
+      "price": 12.99,
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1598823299i/42844155.jpg"
+    },
+    {
+      "title": "Eragon",
+      "author": "Christopher Paolini",
+      "description": "A young farm boy discovers a dragon egg and becomes a Dragon Rider.",
+      "price": 11.99,
+      "image": "https://m.media-amazon.com/images/I/91EJQU2B4cL.jpg"
+    }
+  ],
+  "scifi": [
+    {
+      "title": "Dune",
+      "author": "Frank Herbert",
+      "description": "A young nobleman navigates politics and rebellion on the desert planet Arrakis.",
+      "price": 15.99,
+      "image": "https://images-cdn.ubuy.co.in/667a2941831b713f6862a35c-dune-the-graphic-novel-book-1-dune.jpg"
+    },
+    {
+      "title": "Ender's Game",
+      "author": "Orson Scott Card",
+      "description": "A young boy is trained to be humanity's savior against an alien threat.",
+      "price": 11.49,
+      "image": "https://m.media-amazon.com/images/I/91T-14y8aTL._AC_UF1000,1000_QL80_.jpg"
+    },
+    {
+      "title": "Neuromancer",
+      "author": "William Gibson",
+      "description": "A washed-up computer hacker is hired for one last job in a cyberpunk dystopia.",
+      "price": 13.99,
+      "image": "https://m.media-amazon.com/images/I/81m-rJnUdRL.jpg"
+    }
+  ],
+  "mystery": [
+    {
+      "title": "The Girl with the Dragon Tattoo",
+      "author": "Stieg Larsson",
+      "description": "A journalist and a hacker investigate a 40-year-old missing persons case.",
+      "price": 14.99,
+      "image": "https://rukminim2.flixcart.com/image/850/1000/k8q8nm80/book/9/2/9/the-girl-with-the-dragon-tattoo-original-imafqzkpqcdz8ujc.jpeg?q=20&crop=false"
+    },
+    {
+      "title": "Gone Girl",
+      "author": "Gillian Flynn",
+      "description": "A woman goes missing, and the mystery surrounding her disappearance unravels.",
+      "price": 12.49,
+      "image": "https://m.media-amazon.com/images/I/51yPqOEB0FL._AC_UF350,350_QL50_.jpg"
+    },
+    {
+      "title": "Big Little Lies",
+      "author": "Liane Moriarty",
+      "description": "A story of family secrets, lies, and murder at a school.",
+      "price": 13.99,
+      "image": "https://m.media-amazon.com/images/I/71l2dN4K4vL._AC_UF350,350_QL50_.jpg"
+    }
+  ],
+  "nonfi": [
+    {
+      "title": "Educated",
+      "author": "Tara Westover",
+      "description": "A memoir about a woman who grows up in a strict family in rural Idaho and later escapes to learn about the world.",
+      "price": 14.99,
+      "image": "https://m.media-amazon.com/images/I/71N2HZwRo3L._UF350,350_QL50_.jpg"
+    },
+    {
+      "title": "Becoming",
+      "author": "Michelle Obama",
+      "description": "The memoir of former First Lady Michelle Obama, tracing her life from childhood to the White House.",
+      "price": 16.99,
+      "image": "https://rukminim2.flixcart.com/image/850/1000/kufuikw0/book/z/z/8/becoming-original-imag7jnzvj5yhfwy.jpeg?q=90&crop=false"
+    },
+    {
+      "title": "Sapiens: A Brief History of Humankind",
+      "author": "Yuval Noah Harari",
+      "description": "A thought-provoking exploration of the history of human beings, from ancient history to modern times.",
+      "price": 18.49,
+      "image": "https://m.media-amazon.com/images/I/61i4k7DWNFL._AC_UF1000,1000_QL80_.jpg"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>JavaScript HTML Events</h1>
+<h2>The onchange Attribute</h2>
+
+Enter your name: <input type="text" id="fname" onchange="lowerCase()">
+<h1 onmouseover="Over(this)" onmouseout="Out(this)" style="background-color:#d4ada8;width:120px;height:20px;padding:40px;">Hello!</h1>
+<h1 onmousedown="down(this)" onmouseup="up(this)" style="background-color:#d4ada8;width:120px;height:30px;padding:40px;">Hello!</h1>
+<script>
+function lowerCase() {
+  const x = document.getElementById("fname");
+  x.value = x.value.toLowerCase();
+}
+function Over(obj){
+    obj.innerHTML="welcome";
+}
+function Out(obj){
+    obj.innerHTML="Hello!";
+}
+function down(obj){
+    obj.innerHTML="Release"
+}
+function up(obj){
+    obj.innerHTML="Thank you!"
+}
+</script>
+
+</body>
+</html>

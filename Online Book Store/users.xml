@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<users>
+    <user>
+        <username>john_doe</username>
+        <password encrypted="yes">a94a8fe5ccb19ba61c4c0873d391e987982fbbd3</password>
+        <email>john.doe@example.com</email>
+        <purchase_history>
+            <purchase>
+                <item>Wireless Mouse</item>
+                <price currency="USD">25.00</price>
+                <date>2024-02-25</date>
+            </purchase>
+            <purchase>
+                <item>Mechanical Keyboard</item>
+                <price currency="USD">60.00</price>
+                <date>2024-01-15</date>
+            </purchase>
+        </purchase_history>
+    </user>
+
+    <user>
+        <username>jane_smith</username>
+        <password encrypted="yes">5e884898da28047151d0e56f8dc6292773603d0d</password> 
+        <email>jane.smith@example.com</email>
+        <purchase_history>
+            <purchase>
+                <item>Smartphone</item>
+                <price currency="USD">699.00</price>
+                <date>2024-02-10</date>
+            </purchase>
+        </purchase_history>
+    </user>
+</users>
